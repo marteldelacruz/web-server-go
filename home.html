@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Table V02</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+</head>
+<body background="images/background.png">
+    <!-- HEADER INFO -->
+	<header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Web Server</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/grades">Grades</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/average">Average</a>
+                </li>
+              </ul>
+              <!-- RIGHT UPPER CORNER TEXT -->
+              <span class="navbar-text">
+                Martel Mosqueda De La Cruz
+              </span>
+            </div>
+	    </nav>
+	</header>
+
+	<!-- blank space -->
+	<div style="height: 200px;"></div>
+
+	<!-- Form content -->
+	<div class="p-5 mx-auto mt-10" style="width:500px; background-color: #eee;">
+		<form>
+		<div class="form-group">
+			<h4 style="text-align: center;">Student Registration Form</h4>
+		</div>
+		<div class="form-group">
+		  <label for="name">Name</label>
+		  <input type="text" class="form-control" id="name" placeholder="Juanito Perez">
+		</div>
+		<div class="form-group">
+		  <label for="subject">Subject</label>
+		  <input type="text" class="form-control" id="subject" placeholder="Sistemas Operativos">
+		</div>
+		<div class="form-group">
+			<label for="grade">Grade</label>
+			<input type="text" class="form-control" id="grade" placeholder="100">
+		</div>
+		<div style="height: 70px; margin: auto;" align="right">
+			<button type="submit" class="btn btn-primary btn-lg">Save</button>
+		</div>
+		</form>
+	</div>
+	<!-- End of form content -->
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+</body>
+</html>

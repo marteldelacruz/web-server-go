@@ -13,7 +13,17 @@ func HomePage(res http.ResponseWriter, req *http.Request) {
 		"text/html",
 	)
 	fmt.Fprintf(
-		res, Util.LoadHtml("index.html"),
+		res, Util.LoadHtml("home.html"),
+	)
+}
+
+func GradesPage(res http.ResponseWriter, req *http.Request) {
+	res.Header().Set(
+		"Content-Type",
+		"text/html",
+	)
+	fmt.Fprintf(
+		res, Util.LoadHtml("grades.html"),
 	)
 }
 
@@ -23,6 +33,7 @@ func main() {
 
 	// home page
 	http.HandleFunc("/home", HomePage)
+	http.HandleFunc("/grades", GradesPage)
 
 	// debug purposes :D
 	fmt.Println("----------------------------------")
