@@ -45,25 +45,26 @@
 
 	<!-- Form content -->
 	<div class="p-5 mx-auto mt-10" style="width:500px; background-color: #eee;">
-		<form>
-		<div class="form-group">
-			<h4 style="text-align: center;">Student Registration Form</h4>
-		</div>
-		<div class="form-group">
-		  <label for="name">Name</label>
-		  <input type="text" class="form-control" id="name" placeholder="Juanito Perez">
-		</div>
-		<div class="form-group">
-		  <label for="subject">Subject</label>
-		  <input type="text" class="form-control" id="subject" placeholder="Sistemas Operativos">
-		</div>
-		<div class="form-group">
-			<label for="grade">Grade</label>
-			<input type="text" class="form-control" id="grade" placeholder="100">
-		</div>
-		<div style="height: 70px; margin: auto;" align="right">
-			<button type="submit" class="btn btn-primary btn-lg">Save</button>
-		</div>
+		<!-- DIRECT FORM :D -->
+		<form action="/save" method="POST" id="saveForm">
+			<div class="form-group">
+				<h4 style="text-align: center;">Student Registration Form</h4>
+			</div>
+			<div class="form-group">
+			<label for="name">Name</label>
+			<input type="text" class="form-control" name="name" placeholder="Juanito Perez">
+			</div>
+			<div class="form-group">
+			<label for="subject">Subject</label>
+			<input type="text" class="form-control" name="subject" placeholder="Sistemas Operativos">
+			</div>
+			<div class="form-group">
+				<label for="grade">Grade</label>
+				<input type="text" class="form-control" name="grade" placeholder="100">
+			</div>
+			<div style="height: 70px; margin: auto;" align="right">
+				<button type="submit" class="btn btn-primary btn-lg">Save</button>
+			</div>
 		</form>
 	</div>
 	<!-- End of form content -->
