@@ -119,6 +119,25 @@ func (server *Server) HomePage(res http.ResponseWriter, req *http.Request) {
 	)
 }
 
+//
+func (server *Server) GetGradesTable() string {
+	data := ""
+	var total int64 = 1
+	fmt.Println("Client ask for all data")
+
+	for name, s := range (*server).Maps.Student {
+		for subject, g := range s {
+			data += "<tr><th scope='row'>" + fmt.Sprint(total) + "</th>"
+			data += "<td>" + name + "</td>"
+			data += "<td>" + subject + "</td>"
+			data += "<td>" + fmt.Sprintf("%.2f", g) + "</td></tr>"
+			total += 1
+		}
+	}
+
+	return data
+}
+
 // This page will show all the data stored by the client
 // on a single table
 func (server *Server) GradesPage(res http.ResponseWriter, req *http.Request) {
@@ -127,8 +146,10 @@ func (server *Server) GradesPage(res http.ResponseWriter, req *http.Request) {
 		"text/html",
 	)
 	// sending grades.html
+	gradesTable := server.GetGradesTable()
+
 	fmt.Fprintf(
-		res, Util.LoadHtml("grades.html"),
+		res, Util.LoadHtml("grades.html"), gradesTable,
 	)
 }
 
@@ -144,6 +165,10 @@ func (server *Server) Save(res http.ResponseWriter, req *http.Request) {
 			return
 		}
 		(*server).SaveToMaps(req)
+
+		fmt.Fprintf(
+			res, Util.LoadHtml("saved.html"),
+		)
 		break
 	default:
 		fmt.Println("Cannot handle requested method :(")
