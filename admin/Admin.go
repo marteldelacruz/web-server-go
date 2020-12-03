@@ -119,7 +119,19 @@ func (server *Server) HomePage(res http.ResponseWriter, req *http.Request) {
 	)
 }
 
-//
+func (server *Server) AveragePage(res http.ResponseWriter, req *http.Request) {
+	res.Header().Set(
+		"Content-Type",
+		"text/html",
+	)
+	// sending home.html
+	fmt.Fprintf(
+		res, Util.LoadHtml("average.html"), "<p></p>",
+	)
+}
+
+// Returns a string with the html code of the data
+// on a table
 func (server *Server) GetGradesTable() string {
 	data := ""
 	var total int64 = 1
@@ -191,4 +203,57 @@ func (server *Server) SaveToMaps(req *http.Request) {
 
 	// add to the list
 	server.Add(args)
+}
+
+// searchs the average of a student or a subject
+// this can also return the general average if the requested
+// subject is ALL
+func (server *Server) SearchAverage(req *http.Request) string {
+	var avrg float64
+
+	// new args struct
+	args := Args{
+		Name:    req.FormValue("name"),
+		Subject: req.FormValue("subject"),
+	}
+
+	// what are we looking for ?
+	if args.Name != "" {
+		avrg = (*server).StudentAverage(args)
+		// looking for general average
+	} else if args.Subject == "all" {
+		avrg = (*server).GeneralAverage(args)
+	} else {
+		avrg = (*server).SubjectAverage(args)
+	}
+
+	result := fmt.Sprintf("%.2f", avrg)
+
+	// add to the list
+	return result
+}
+
+// this function will handle the requested methods from the
+// home form in order to save new data
+func (server *Server) Search(res http.ResponseWriter, req *http.Request) {
+	fmt.Println("SEARCH method => " + req.Method)
+
+	switch req.Method {
+	case "POST":
+		if err := req.ParseForm(); err != nil {
+			fmt.Fprintf(res, "ParseForm() error %v", err)
+			return
+		}
+
+		// search verage
+		result := "<p> Result: " + (*server).SearchAverage(req) + "</p>"
+
+		fmt.Fprintf(
+			res, Util.LoadHtml("average.html"), result,
+		)
+		break
+	default:
+		fmt.Println("Cannot handle requested method :(")
+		break
+	}
 }

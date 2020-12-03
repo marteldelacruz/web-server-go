@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
 	<title>Home</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="2;url=/home" />
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -23,14 +22,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home</a>
                   </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/grades">Grades</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/average">Average</a>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/average">Average <span class="sr-only">(current)</span></a>
                 </li>
               </ul>
               <!-- RIGHT UPPER CORNER TEXT -->
@@ -47,9 +46,47 @@
 	<!-- Form content -->
 	<div class="p-5 mx-auto mt-10" style="width:500px; background-color: #eee;">
 		<!-- DIRECT FORM :D -->
-        <div>
-            <h4 style="text-align: center;">The info has been saved :D</h4>
-        </div>
+		<form action="/search" method="POST" id="searchForm">
+			<div class="form-group">
+				<h4 style="text-align: center;">Average Search Form</h4>
+			</div>
+
+			<div class="form-group">
+				<ul name="type" class="nav nav-tabs nav-justified md-tabs" id="myTabJust" role="tablist">
+					<li class="nav-item">
+					  <a value="student" class="nav-link active" id="student-tab-just" data-toggle="tab" href="#student-just" role="tab" aria-controls="student-just"
+						aria-selected="true">Student</a>
+					</li>
+					<li class="nav-item">
+					  <a value="subject" class="nav-link" id="subject-tab-just" data-toggle="tab" href="#subject-just" role="tab" aria-controls="subject-just"
+						aria-selected="false">Subject</a>
+					</li>
+				</ul>
+				<div class="tab-content card pt-5" id="myTabContentJust">
+					<div class="tab-pane fade show active" id="student-just" role="tabpanel" aria-labelledby="student-tab-just">
+						<div class="form-group">
+							<label for="name">Name</label>
+							<input type="text" class="form-control" name="name" placeholder="Juanito Perez">
+						</div>
+					</div>
+					<div class="tab-pane fade" id="subject-just" role="tabpanel" aria-labelledby="subject-tab-just">
+						<div class="form-group">
+							<label for="subject">Subject</label>
+							<input type="text" class="form-control" name="subject" placeholder="Sistemas Operativos">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div style="height: 70px; margin: auto;" align="right">
+				<button type="submit" class="btn btn-primary btn-lg">Search</button>
+			</div>
+
+			<div>
+				%s
+			</div>
+		</form>
+
 	</div>
 	<!-- End of form content -->
 <!--===============================================================================================-->	

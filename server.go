@@ -16,10 +16,12 @@ func main() {
 	// handle styles
 	http.Handle("/", http.FileServer(http.Dir("./style")))
 
-	// home page
+	// available pages
 	http.HandleFunc("/home", server.HomePage)
 	http.HandleFunc("/grades", server.GradesPage)
 	http.HandleFunc("/save", server.Save)
+	http.HandleFunc("/search", server.Search)
+	http.HandleFunc("/average", server.AveragePage)
 
 	// debug purposes :D
 	fmt.Println("----------------------------------")
