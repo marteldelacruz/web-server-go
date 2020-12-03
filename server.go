@@ -19,9 +19,12 @@ func main() {
 	// available pages
 	http.HandleFunc("/home", server.HomePage)
 	http.HandleFunc("/grades", server.GradesPage)
+	http.HandleFunc("/average", server.AveragePage)
+	http.HandleFunc("/general", server.GeneralPage)
+
+	// forms
 	http.HandleFunc("/save", server.Save)
 	http.HandleFunc("/search", server.Search)
-	http.HandleFunc("/average", server.AveragePage)
 
 	// debug purposes :D
 	fmt.Println("----------------------------------")

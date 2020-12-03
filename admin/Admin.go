@@ -91,7 +91,7 @@ func (server *Server) SubjectAverage(args Args) float64 {
 }
 
 // Returns the average of all students and subjects
-func (server *Server) GeneralAverage(args Args) float64 {
+func (server *Server) GeneralAverage() float64 {
 	var total float64
 	var result float64 = 0
 	fmt.Println("Client ask for general average")
@@ -119,6 +119,7 @@ func (server *Server) HomePage(res http.ResponseWriter, req *http.Request) {
 	)
 }
 
+// returns the page with the average options
 func (server *Server) AveragePage(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set(
 		"Content-Type",
@@ -127,6 +128,19 @@ func (server *Server) AveragePage(res http.ResponseWriter, req *http.Request) {
 	// sending home.html
 	fmt.Fprintf(
 		res, Util.LoadHtml("average.html"), "<p></p>",
+	)
+}
+
+// returns the page with the general average
+func (server *Server) GeneralPage(res http.ResponseWriter, req *http.Request) {
+	res.Header().Set(
+		"Content-Type",
+		"text/html",
+	)
+	// sending home.html
+	fmt.Fprintf(
+		res, Util.LoadHtml("general.html"),
+		fmt.Sprintf("%.2f", (*server).GeneralAverage()),
 	)
 }
 
@@ -222,7 +236,7 @@ func (server *Server) SearchAverage(req *http.Request) string {
 		avrg = (*server).StudentAverage(args)
 		// looking for general average
 	} else if args.Subject == "all" {
-		avrg = (*server).GeneralAverage(args)
+		avrg = (*server).GeneralAverage()
 	} else {
 		avrg = (*server).SubjectAverage(args)
 	}
